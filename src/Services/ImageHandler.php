@@ -40,6 +40,7 @@ class ImageHandler implements ImageHandlerInterface
             $this->directory = pathinfo($source, PATHINFO_DIRNAME);
             $this->image = $this->manager->read($this->originalPath);
         } elseif ($source instanceof UploadedFile) {
+            $this->originalPath = $source->getClientOriginalName();
             $this->image = $this->manager->read($source->getRealPath());
         } else {
             throw new Exception('Invalid image source.');
