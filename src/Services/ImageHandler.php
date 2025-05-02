@@ -7,6 +7,7 @@ use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use Illuminate\Http\UploadedFile;
 use Exception;
+use Storage;
 
 class ImageHandler implements ImageHandlerInterface
 {
