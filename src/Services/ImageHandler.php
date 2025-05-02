@@ -38,7 +38,8 @@ class ImageHandler implements ImageHandlerInterface
 
             $this->originalPath = $this->storage->path($disk, $source);
             $this->directory = pathinfo($source, PATHINFO_DIRNAME);
-            $this->image = $this->manager->read($this->originalPath);
+            $imageContent = Storage::disk($disk)->get($source);
+            $this->image = $this->manager->read($imageContent);
         } elseif ($source instanceof UploadedFile) {
             $this->originalPath = $source->getClientOriginalName();
             $this->image = $this->manager->read($source->getRealPath());
